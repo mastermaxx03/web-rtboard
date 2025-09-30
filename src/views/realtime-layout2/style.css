@@ -1,0 +1,141 @@
+/* Page container styles */
+.page-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f4f6f8;
+  padding: 15px 10px;
+  box-sizing: border-box;
+}
+
+/* Main layout container for the columns */
+.dashboard-layout {
+  display: flex;
+  gap: 15px;
+  align-items: start;
+  height: calc(100vh - 30px);
+}
+
+/* --- NEW COLUMN WIDTH LOGIC --- */
+
+/* Default width for the narrowest columns (3 & 4) */
+.dashboard-column {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  flex: 8; /* Base width */
+  min-height: 0;
+  overflow-y: auto;
+}
+
+/* Override for the WIDEST column (2) */
+.dashboard-column.col-wide {
+  flex: 12; /* Highest number = widest column */
+}
+
+/* Override for the SECOND-WIDEST column (1) */
+.dashboard-layout > .dashboard-column:nth-child(1) {
+  flex: 10; /* Middle number = second widest */
+}
+
+/* Unified card styling */
+/* .card {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  flex-grow: 1;
+  flex-shrink: 0;
+} */
+.card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+
+  display: flex;
+  flex-direction: column; /* Stack children vertically (header, content) */
+  overflow: hidden; /* Prevents content from spilling out */
+}
+/* In your main style.css */
+.card-header {
+  display: flex;
+  justify-content: space-between; /* MAGIC: Pushes title left, controls right */
+  align-items: center; /* Aligns them vertically in the middle */
+  padding: 12px 12px; /* Standard spacing for all headers */
+  border-bottom: 1px solid #f1f5f9;
+  flex-shrink: 0; /* Optional: A faint line for separation */
+}
+.card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.card-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px; /* Space between multiple icons/toggles */
+}
+/* In your main style.css */
+.card-content {
+  flex-grow: 1; /* MAGIC: This makes the content area expand to fill space */
+  display: flex; /* Use flexbox for easy content centering/alignment */
+  /* justify-content: center; */
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+/* --- Height overrides (These remain unchanged) --- */
+
+/* Column 1 */
+.dashboard-layout > .dashboard-column:nth-child(1) > .card:nth-child(2) {
+  flex-grow: 2;
+}
+.dashboard-layout > .dashboard-column:nth-child(1) > .card:nth-child(3) {
+  flex-grow: 2;
+}
+
+/* Column 2 */
+.dashboard-column .c2-item1 {
+  flex-grow: 2;
+}
+.dashboard-column .c2-item2 {
+  flex-grow: 1;
+}
+.dashboard-column .c2-item3 {
+  flex-grow: 3;
+}
+
+/* Column 3 */
+.dashboard-layout > .dashboard-column:nth-child(3) > .card:nth-child(1) {
+  flex-grow: 2;
+}
+.dashboard-layout > .dashboard-column:nth-child(3) > .card:nth-child(2) {
+  flex-grow: 3;
+}
+.dashboard-layout > .dashboard-column:nth-child(3) > .card:nth-child(3) {
+  flex-grow: 2;
+}
+
+/* Fullscreen button styling */
+.fullscreen-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 100;
+}

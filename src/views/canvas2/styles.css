@@ -1,0 +1,32 @@
+/* style.css */
+
+/* Keyframe animation for a warning glow */
+@keyframes glow-warning {
+  0%,
+  100% {
+    box-shadow: 0 0 5px 2px #ffdb58;
+  } /* Yellow/Orange, subtle at start/end */
+  50% {
+    box-shadow: 0 0 15px 7px #ffdb58;
+  } /* Brighter and wider in the middle */
+}
+
+/* Keyframe animation for a critical glow */
+@keyframes glow-critical {
+  0%,
+  100% {
+    box-shadow: 0 0 5px 2px #ef4444;
+  } /* Red, subtle at start/end */
+  50% {
+    box-shadow: 0 0 20px 8px #ef4444;
+  } /* Brighter and wider in the middle */
+}
+
+/* Apply these classes to your Paper component */
+.node-glow-warning {
+  animation: glow-warning 2s ease-in-out infinite; /* 2-second duration, smooth, repeats */
+}
+
+.node-glow-critical {
+  animation: glow-critical 1.5s ease-in-out infinite; /* Slightly faster for critical, more urgent */
+}
