@@ -57,7 +57,7 @@ export default function MainLayout() {
       <MainContentStyled {...{ borderRadius, open: drawerOpen }}>
         <Box sx={{ ...{ px: { xs: 0 } }, minHeight: 'calc(100vh - 128px)', display: 'flex', flexDirection: 'column' }}>
           {/* breadcrumb */}
-          <Breadcrumbs />
+
           <Outlet />
           <Footer />
         </Box>

@@ -1,4 +1,5 @@
-import useSWR from 'swr';
+import useSWR, { mutate } from 'swr';
+import { useMemo } from 'react';
 
 // Only two menu items: Canvas2 and Realtime Dashboard
 const initialState = {
