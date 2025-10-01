@@ -34,12 +34,12 @@ export default function AuthLogin() {
   const handleClickShowPassword = () => setShowPassword((s) => !s);
   const handleMouseDownPassword = (e) => e.preventDefault();
 
-  useEffect(() => {
-    const token = localStorage.getItem('accessToken');
-    if (token) {
-      navigate('/canvas2', { replace: true });
-    }
-  }, [navigate]);
+  // useEffect(() => {
+  //   //const token = localStorage.getItem('accessToken');
+  //  // if (token) {
+  //   //  navigate('/canvas2', { replace: true });
+  //   }
+  // }, []);
 
   const validate = () => {
     if (!email) return 'Email is required';

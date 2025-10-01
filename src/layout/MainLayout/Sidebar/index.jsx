@@ -27,11 +27,11 @@ export default function Sidebar() {
             <ListItemText primary="Plant Layout" />
           </ListItemButton>
         </NavLink>
-        <NavLink to="/realtime-dashboard2" style={{ textDecoration: 'none', color: 'inherit' }}>
+        {/* <NavLink to="/realtime-dashboard2" style={{ textDecoration: 'none', color: 'inherit' }}>
           <ListItemButton selected={menuMaster.openedItem === 'realtime-dashboard2'}>
             <ListItemText primary="Real-time Dashboard" />
           </ListItemButton>
-        </NavLink>
+        </NavLink> */}
       </List>
     </Drawer>
   );
