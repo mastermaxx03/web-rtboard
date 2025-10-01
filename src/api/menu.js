@@ -1,58 +1,35 @@
-import useSWR, { mutate } from 'swr';
-import { useMemo } from 'react';
+import useSWR from 'swr';
 
+// Only two menu items: Canvas2 and Realtime Dashboard
 const initialState = {
-  openedItem: 'dashboard',
-  openedComponent: 'buttons',
-  openedHorizontalItem: null,
-  isDashboardDrawerOpened: false,
-  isComponentDrawerOpened: true
+  openedItem: 'canvas2',
+  isDashboardDrawerOpened: false
 };
 
 export const endpoints = {
-  key: 'api/menu',
-  master: 'master',
-  dashboard: '/dashboard' // server URL
+  key: 'api/menu'
 };
 
 export function useGetMenuMaster() {
-  const { data, isLoading } = useSWR(endpoints.key + endpoints.master, () => initialState, {
+  const { data, isLoading } = useSWR(endpoints.key, () => initialState, {
     revalidateIfStale: false,
     revalidateOnFocus: false,
     revalidateOnReconnect: false
   });
 
-  const memoizedValue = useMemo(
-    () => ({
-      menuMaster: data,
-      menuMasterLoading: isLoading
-    }),
-    [data, isLoading]
-  );
-
-  return memoizedValue;
+  return {
+    menuMaster: data,
+    menuMasterLoading: isLoading
+  };
 }
 
 export function handlerDrawerOpen(isDashboardDrawerOpened) {
-  // to update local state based on key
-
-  mutate(
-    endpoints.key + endpoints.master,
-    (currentMenuMaster) => {
-      return { ...currentMenuMaster, isDashboardDrawerOpened };
-    },
-    false
-  );
+  mutate(endpoints.key, (current) => ({ ...current, isDashboardDrawerOpened }), false);
 }
 
 export function handlerActiveItem(openedItem) {
-  // to update local state based on key
-
-  mutate(
-    endpoints.key + endpoints.master,
-    (currentMenuMaster) => {
-      return { ...currentMenuMaster, openedItem };
-    },
-    false
-  );
+  if (openedItem !== 'canvas2' && openedItem !== 'realtime-dashboard2') {
+    openedItem = 'canvas2';
+  }
+  mutate(endpoints.key, (current) => ({ ...current, openedItem }), false);
 }

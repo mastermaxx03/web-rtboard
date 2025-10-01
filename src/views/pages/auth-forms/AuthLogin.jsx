@@ -14,7 +14,6 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
 // project imports
-import AnimateButton from 'ui-component/extended/AnimateButton';
 
 // assets
 import Visibility from '@mui/icons-material/Visibility';
@@ -38,7 +37,7 @@ export default function AuthLogin() {
   useEffect(() => {
     const token = localStorage.getItem('accessToken');
     if (token) {
-      navigate('/dashboard', { replace: true });
+      navigate('/canvas2', { replace: true });
     }
   }, [navigate]);
 
@@ -52,7 +51,7 @@ export default function AuthLogin() {
 
   // ✅ New helper: redirect to attempted URL after login
   const redirectAfterLogin = () => {
-    const redirectTo = localStorage.getItem('redirectTo') || '/dashboard';
+    const redirectTo = localStorage.getItem('redirectTo') || '/canvas2';
     localStorage.removeItem('redirectTo');
     window.location.href = redirectTo;
   };
@@ -150,11 +149,9 @@ export default function AuthLogin() {
       </Grid>
 
       <Box sx={{ mt: 2 }}>
-        <AnimateButton>
-          <Button color="primary" fullWidth size="large" type="submit" variant="contained">
-            Sign In
-          </Button>
-        </AnimateButton>
+        <Button color="primary" fullWidth size="large" type="submit" variant="contained">
+          Sign In
+        </Button>
       </Box>
     </form>
   );

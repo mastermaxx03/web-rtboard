@@ -16,8 +16,6 @@ import PerfectScrollbar from 'react-perfect-scrollbar';
 import FontFamily from './FontFamily';
 import BorderRadius from './BorderRadius';
 
-import AnimateButton from 'ui-component/extended/AnimateButton';
-
 // assets
 import { IconSettings } from '@tabler/icons-react';
 // ==============================|| LIVE CUSTOMIZATION ||============================== //
